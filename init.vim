@@ -4,6 +4,7 @@ set tabstop=4
 set shiftwidth=4
 set clipboard=unnamedplus
 
+
 syntax enable
 syntax on
 "colorscheme sublimemonokai
@@ -29,7 +30,10 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
+
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 set guifont=Anonymice\ Nerd\ Font\ Mono\ 11
@@ -97,7 +101,16 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> mr <Plug>(coc-rename)
 
 "nmap <c-m> 
 autocmd filetype cpp nnoremap <F5> :w <bar> exec '!g++ -std=c++17 '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
-autocmd filetype cpp nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
+autocmd filetype cpp nnoremap <F4> :py3f $HOME/.config/nvim/plugged/switchsourceheader.py<cr>
+" autocmd filetype cpp nnoremap <F4> :<C-u>CocCommand clangd.switchSourceHeader<CR>
+
+nmap <silent> <C-p> :GFiles<CR>
+nmap <silent> <C-t> :BTags<CR>
+
+" Buffer previous / next
+nmap <silent> <C-j> :bn<CR>
+nmap <silent> <C-k> :bp<CR>
